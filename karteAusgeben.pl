@@ -8,7 +8,7 @@ printRow([],_,[]).
 printRow([K1|R1],Y,[K2|R2]) :- getField(K1,Y,K2), printRow(R1,Y,R2).
 
 getField(X,Y,F) :- gold(X,Y), F is "G".
-getField(X,Y,F) :- wumpus(X,Y), F is "X".
+getField(X,Y,F) :- wumpus(X,Y,_), F is "X".
 getField(X,Y,F) :- wall(X,Y), F is "W".
 getField(X,Y,F) :- trap(X,Y), F is "T".
 getField(_,_,"-").

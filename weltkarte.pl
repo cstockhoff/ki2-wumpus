@@ -160,6 +160,7 @@ bump(11,1).
 visited(11,1).
 glitter(11,2).
 visited(11,2).
+bump(11,2).
 bump(11,4).
 visited(11,4).
 stench(10,4,3,3).

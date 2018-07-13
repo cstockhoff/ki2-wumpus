@@ -116,19 +116,19 @@ public class MapGenerator {
 						
 						if (x-1 > 0 && tiles[x-1][y].getType() != WumpusTileType.PIT&&
 							tiles[x-1][y].getType() != WumpusTileType.WALL&&
-								tiles[x-1][y].getType() == WumpusTileType.VISITED)
+								( tiles[x-1][y].getType() == WumpusTileType.VISITED || tiles[x-1][y].getType() == WumpusTileType.GOLD ) )
 							breezes.add("breeze(" + (x-1) + "," + y + ").");
 						if (y-1 > 0 && tiles[x][y-1].getType() != WumpusTileType.PIT&&
 								tiles[x][y-1].getType() != WumpusTileType.WALL&&
-								tiles[x][y-1].getType() == WumpusTileType.VISITED)
+								( tiles[x][y-1].getType() == WumpusTileType.VISITED || tiles[x][y-1].getType() == WumpusTileType.GOLD ) )
 							breezes.add("breeze(" + x + "," + (y-1) + ").");
 						if (x+1 < width && tiles[x+1][y].getType() != WumpusTileType.PIT&&
 								tiles[x+1][y].getType() != WumpusTileType.WALL&&
-								tiles[x+1][y].getType() == WumpusTileType.VISITED)
+								( tiles[x+1][y].getType() == WumpusTileType.VISITED || tiles[x+1][y].getType() == WumpusTileType.GOLD ) )
 							breezes.add("breeze(" + (x+1) + "," + y + ").");
 						if (y+1 < height && tiles[x][y+1].getType() != WumpusTileType.PIT&&
 								tiles[x][y+1].getType() != WumpusTileType.WALL&&
-								tiles[x][y+1].getType() == WumpusTileType.VISITED)
+								( tiles[x][y+1].getType() == WumpusTileType.VISITED || tiles[x][y+1].getType() == WumpusTileType.GOLD ) )
 							breezes.add("breeze(" + x + "," + (y+1) + ").");
 						
 						if (ORDER_FACTS_BASED_ON_COORDINATES) {
@@ -144,19 +144,19 @@ public class MapGenerator {
 						
 						if (x-1 > 0 && tiles[x-1][y].getType() != WumpusTileType.WALL&&
 							tiles[x-1][y].getType() != WumpusTileType.PIT&&
-								tiles[x-1][y].getType() == WumpusTileType.VISITED)
+								( tiles[x-1][y].getType() == WumpusTileType.VISITED || tiles[x-1][y].getType() == WumpusTileType.GOLD ) )
 							bumps.add("bump(" + (x-1) + "," + y + ").");
 						if (y-1 > 0 && tiles[x][y-1].getType() != WumpusTileType.WALL&&
 								tiles[x][y-1].getType() != WumpusTileType.PIT&&
-								tiles[x][y-1].getType() == WumpusTileType.VISITED)
+								( tiles[x][y-1].getType() == WumpusTileType.VISITED || tiles[x][y-1].getType() == WumpusTileType.GOLD ) )
 							bumps.add("bump(" + x + "," + (y-1) + ").");
 						if (x+1 < width && tiles[x+1][y].getType() != WumpusTileType.WALL&&
 								tiles[x+1][y].getType() != WumpusTileType.PIT&&
-								tiles[x+1][y].getType() == WumpusTileType.VISITED)
+								( tiles[x+1][y].getType() == WumpusTileType.VISITED || tiles[x+1][y].getType() == WumpusTileType.GOLD ))
 							bumps.add("bump(" + (x+1) + "," + y + ").");
 						if (y+1 < height && tiles[x][y+1].getType() != WumpusTileType.WALL&&
 								tiles[x][y+1].getType() != WumpusTileType.PIT&&
-								tiles[x][y+1].getType() == WumpusTileType.VISITED)
+								( tiles[x][y+1].getType() == WumpusTileType.VISITED || tiles[x][y+1].getType() == WumpusTileType.GOLD ))
 							bumps.add("bump(" + x + "," + (y+1) + ").");
 						
 						if (ORDER_FACTS_BASED_ON_COORDINATES) {
@@ -184,7 +184,7 @@ public class MapGenerator {
 								if (x2 >= 0 && x2 < width && y2 >= 0 && y2 < height)
 									for (int d = 1; d <= dis; d++)
 										if (Math.abs(x2-x)+Math.abs(y2-y) == d) {
-											if (tiles[x2][y2].getType() == WumpusTileType.VISITED) {
+											if (tiles[x2][y2].getType() == WumpusTileType.VISITED || tiles[x2][y2].getType() == WumpusTileType.GOLD ) {
 												if (ORDER_FACTS_BASED_ON_COORDINATES)
 													output.println("stench("+x2+","+y2+","+d+","+wumpus.size()+").");
 												else
