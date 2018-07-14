@@ -44,12 +44,15 @@ possible_trap(X,Y) :-
 % Wann ist ein Feld ein möglicher Wumpus
 wumpus(X,Y,ID) :- 
 	not(visited(X,Y)), not(wall(X,Y)), not(trap(X,Y)),
-	stench(X1,Y1,S,ID), 
-	XE1 is X-X1, 
-	YE1 is Y-Y1, 
-	XE2 is abs(XE1), 
-	YE2 is abs(YE1),
-	S is XE2+YE2.
+	stench(X1,Y1,S,ID),  
+	XE is abs(X-X1), 
+	YE is abs(Y-Y1),
+	S is XE+YE,
+	(
+		(visited(A,B),not(stench(A,B,S2,ID)),AE is abs(X-A),BE is abs(Y-B),S2 is AE+BE, S2=:=3) -> false;
+		(visited(A,B),not(stench(A,B,S2,ID)),AE is abs(X-A),BE is abs(Y-B),S2 is AE+BE, S2=:=2) -> false;
+		(visited(A,B),not(stench(A,B,S2,ID)),AE is abs(X-A),BE is abs(Y-B),S2 is AE+BE, S2=:=1) -> false; true
+	).
 	
 	
 
