@@ -157,6 +157,8 @@ nachbarOhneBreeze( X, Y ) :-
 %    wo der Wumpus nicht gerochen wurde
 wumpus( X, Y, ID ) :-
   fieldWumpusRelevant( X, Y, ID ),
+  % Alternative Version zu findAllStenchFields( ... ):
+  % findall( D, stench( A, B, D, ID), EndList ), !,
   findAllStenchFields( X, Y, ID, [], [], EndList ), !,
   check4AllStenchFields( X, Y, ID, EndList, [] ),
   (
